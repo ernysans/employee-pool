@@ -5,29 +5,34 @@ import DashboardPage from "./components/pages/DashboardPage";
 import PoolPage from "./components/pages/PoolPage";
 import PollCreationPage from "./components/pages/PollCreationPage";
 import LeaderboardPage from "./components/pages/LeaderboardPage";
+import {handleInitialData} from "./actions/shared";
 import {connect} from "react-redux";
 import LogInPage from "./components/pages/LogInPage";
-import {handleInitialData} from "./actions/shared";
+import Progressbar from "./components/shared/Progressbar";
 
-const App = (props) => {
+const App = ({dispatch, ready, loading, authedUser}) => {
   useEffect(() => {
-    props.dispatch(handleInitialData());
-  }, [props]);
-  if (!props.authedUser) return (<LogInPage/>);
+    handleInitialData()(dispatch);
+  }, [dispatch]);
+  if (!ready) return (<Progressbar/>);
   return (<div className="app">
     <Fragment>
-      <Routes>
+      <Progressbar/>
+      <h1>Loading status: {(loading.toString())}</h1>
+      {!loading && !authedUser && (<LogInPage/>)}
+      {!loading && authedUser && (<Routes>
         <Route exact path="/" element={<DashboardPage/>}/>
         <Route exact path="/new" element={<PollCreationPage/>}/>
         <Route path="/pool/:id" element={<PoolPage/>}/>
         <Route exact path="/leaderboard" element={<LeaderboardPage/>}/>
-      </Routes>
+      </Routes>)}
     </Fragment>
   </div>);
 };
 
-const mapStateToProps = ({authedUser}) => ({
-  authedUser,
+const mapStateToProps = ({users, questions, loading}) => ({
+  ready: Object.keys(users).length > 0 && Object.keys(questions).length > 0,
+  loading,
 });
 
 export default connect(mapStateToProps)(App);

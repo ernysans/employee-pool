@@ -1,15 +1,15 @@
 import {getInitialData} from "../utils/api";
 import {receiveUsers} from "./users";
-import {hideLoading, showLoading} from "react-redux-loading-bar";
 import {receiveQuestions} from "./questions";
+import {setLoading} from "./loading";
 
 export function handleInitialData() {
   return (dispatch) => {
-    dispatch(showLoading());
+    dispatch(setLoading(true));
     return getInitialData().then(({users, questions}) => {
       dispatch(receiveUsers(users));
       dispatch(receiveQuestions(questions));
-      dispatch(hideLoading());
+      dispatch(setLoading(false));
     });
   };
 }
