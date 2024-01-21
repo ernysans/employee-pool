@@ -5,7 +5,7 @@ const Avatar = ({url}) => {
     <img
       src={url}
       alt="avatar"
-      className="w-10 h-10 rounded-full cursor-pointer transition duration-150 transform hover:scale-110"
+      className="avatar"
     />
   );
 };

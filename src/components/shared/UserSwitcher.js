@@ -20,7 +20,7 @@ const UserSwitcher = ({users, dispatch, authedUser}) => {
       <span className="mdc-select__ripple"></span>
       <span className="mdc-floating-label"></span>
       <span className="mdc-select__selected-text-container">
-            <img src={selected.avatarURL} alt="Avatar" className="mdc-list-item__graphic"/>
+        <img src={selected.avatarURL} alt="Avatar" className="mdc-list-item__graphic"/>
         <span className="mdc-select__selected-text">{selected.name}</span>
       </span>
       <span className="mdc-select__dropdown-icon">
