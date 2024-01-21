@@ -1,0 +1,41 @@
+.mdc-tab .mdc-tab__icon,
+.mdc-tab .mdc-tab__text-label {
+  color: #ffff;
+}
+
+.mdc-tab-bar * {
+  color: #ffff;
+  --mdc-theme-primary: #ffff;
+}
+
+.mdc-list-item__graphic {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+.mdc-select__selected-text-container .mdc-list-item__graphic {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 1.5rem;
+}
+.mdc-select__menu .mdc-list-item {
+  padding: 0.5rem 1rem;
+}
+
+
+
+/* Shared styles */
+
+.container {
+  display: block;
+  max-width: 1024px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.content-container {
+  padding: 1rem 0;
+  margin: 0 1rem;
+  display: block;
+}

@@ -1,8 +1,10 @@
-import PropTypes from "prop-types";
 import {useLocation} from "react-router-dom";
 import NavTab from "./NavTab";
+import UserSwitcher from "./UserSwitcher";
+import {connect} from "react-redux";
+import {logoutUser} from "../../actions/authedUser";
 
-const Nav = () => {
+const Nav = ({dispatch}) => {
   const location = useLocation();
   const path = location.pathname;
   let activeSection;
@@ -13,6 +15,10 @@ const Nav = () => {
   } else if (path === '/new') {
     activeSection = 'new';
   }
+  const handleSignOut = (e) => {
+    e.preventDefault();
+    dispatch(logoutUser());
+  };
   return (
     <div>
       <header className="mdc-top-app-bar mdc-top-app-bar--prominent-fixed-adjust">
@@ -32,6 +38,10 @@ const Nav = () => {
             </div>
           </section>
           <section className="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+            <UserSwitcher/>
+            <button className="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Download"
+                    title="Sign out" onClick={handleSignOut}>exit_to_app
+            </button>
           </section>
         </div>
       </header>
@@ -39,7 +49,6 @@ const Nav = () => {
   );
 };
 
-Nav.propTypes = {
-  path: PropTypes.string,
-};
-export default Nav;
+export default connect()(Nav);
+
+

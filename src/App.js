@@ -1,5 +1,5 @@
 import {Fragment, useEffect} from 'react';
-import './App.css';
+import './styles/App.css';
 import {Route, Routes} from "react-router-dom";
 import DashboardPage from "./components/pages/DashboardPage";
 import PoolPage from "./components/pages/PoolPage";
@@ -18,7 +18,6 @@ const App = ({dispatch, ready, loading, authedUser}) => {
   return (<div className="app">
     <Fragment>
       <Progressbar/>
-      <h1>Loading status: {(loading.toString())}</h1>
       {!loading && !authedUser && (<LogInPage/>)}
       {!loading && authedUser && (<Routes>
         <Route exact path="/" element={<DashboardPage/>}/>
@@ -30,9 +29,10 @@ const App = ({dispatch, ready, loading, authedUser}) => {
   </div>);
 };
 
-const mapStateToProps = ({users, questions, loading}) => ({
+const mapStateToProps = ({users, questions, loading, authedUser}) => ({
   ready: Object.keys(users).length > 0 && Object.keys(questions).length > 0,
   loading,
+  authedUser,
 });
 
 export default connect(mapStateToProps)(App);

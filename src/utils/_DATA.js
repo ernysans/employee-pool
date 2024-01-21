@@ -3,7 +3,7 @@ let users = {
     id: 'sarahedo',
     password: 'password123',
     name: 'Sarah Edo',
-    avatarURL: null,
+    avatarURL: 'https://images.unsplash.com/photo-1552699611-e2c208d5d9cf?w=300&h=300&auto=format&fit=crop&q=60',
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionOne',
@@ -16,7 +16,7 @@ let users = {
     id: 'tylermcginnis',
     password: 'abc321',
     name: 'Tyler McGinnis',
-    avatarURL: null,
+    avatarURL: 'https://images.unsplash.com/photo-1531384441138-2736e62e0919?w=300&h=300&auto=format&fit=crop&q=60',
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo',
@@ -27,7 +27,7 @@ let users = {
     id: 'mtsamis',
     password: 'xyz123',
     name: 'Mike Tsamis',
-    avatarURL: null,
+    avatarURL: 'https://images.unsplash.com/photo-1594672830234-ba4cfe1202dc?w=300&h=300&auto=format&fit=crop&q=60',
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
@@ -39,10 +39,18 @@ let users = {
     id: 'zoshikanlu',
     password: 'pass246',
     name: 'Zenobia Oshikanlu',
-    avatarURL: null,
+    avatarURL: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=300&h=300&auto=format&fit=crop&q=60',
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
     },
+    questions: [],
+  },
+  tester: {
+    id: 'tester',
+    password: 'password',
+    name: 'Test User',
+    avatarURL: 'https://images.unsplash.com/photo-1506863530036-1efeddceb993?w=300&h=300&auto=format&fit=crop&q=60',
+    answers: {},
     questions: [],
   }
 }
