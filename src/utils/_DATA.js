@@ -50,7 +50,9 @@ let users = {
     password: 'password',
     name: 'Test User',
     avatarURL: 'https://images.unsplash.com/photo-1506863530036-1efeddceb993?w=300&h=300&auto=format&fit=crop&q=60',
-    answers: {},
+    answers: {
+      "xj352vofupe1dqz9emx13r": 'optionOne',
+    },
     questions: [],
   }
 }

@@ -1,0 +1,19 @@
+.leaderboard-user-item {
+  display: block;
+  position: relative;
+  padding: 1rem 0.5rem;
+}
+
+.leaderboard-user-item Avatar {
+  display: inline-block;
+  float: left;
+  position: relative;
+}
+.leaderboard-user-item__content {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.leaderboard-user-item__content > * {
+  display: block;
+}
