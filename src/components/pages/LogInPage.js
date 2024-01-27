@@ -54,7 +54,7 @@ const LogInPage = ({users, dispatch}) => {
             </div>
           </div>
           {userExist && (<div className="mdc-text-field mdc-text-field--filled">
-            <input type="password" id="password" className="mdc-text-field__input" value={password}
+            <input type="password" autoComplete="off" id="password" className="mdc-text-field__input" value={password}
                    onChange={handlePasswordChange}/>
             <div className="mdc-notched-outline">
               <div className="mdc-notched-outline__leading"></div>

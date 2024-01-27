@@ -18,8 +18,8 @@ const App = ({dispatch, ready, loading, authedUser}) => {
   return (<div className="app">
     <Fragment>
       <Progressbar/>
-      {!loading && !authedUser && (<LogInPage/>)}
-      {!loading && authedUser && (<Routes>
+      {!authedUser && (<LogInPage/>)}
+      {authedUser && (<Routes>
         <Route exact path="/" element={<DashboardPage/>}/>
         <Route exact path="/add" element={<PollCreationPage/>}/>
         <Route path="/questions/:question_id" element={<PoolPage/>}/>

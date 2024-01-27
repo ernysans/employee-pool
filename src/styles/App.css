@@ -87,13 +87,14 @@
   .question-list {
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     align-content: start;
+    align-items: start;
   }
 
   .question-list-item {
     display: inline-grid;
-    width: 45%;
+    width: 49%;
   }
 }
 
@@ -146,4 +147,11 @@
 #pool-page .answers .answer[data-voted=true] {
   background-color: var(--mdc-theme-primary, black);
   color: #fff;
+}
+
+/**
+  * Pool Creation Page
+  */
+#pool-creation-page {
+  text-align: center;
 }

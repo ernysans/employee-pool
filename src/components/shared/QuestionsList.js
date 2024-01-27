@@ -17,10 +17,12 @@ const QuestionsList = ({title, questions, authedUser}) => {
               <div className="mdc-card">
                 <div className="content-container">
                   <UserPreview uid={pool.author}></UserPreview>
-                  {authedUser === pool.author && (
-                    <span className="mdc-typography--caption">Your question</span>
-                  )}
-                  <p className="mdc-typography--body2">{new Date(pool.timestamp).toLocaleString()}</p>
+                  <p className="mdc-typography--body2">
+                    {new Date(pool.timestamp).toLocaleString()}
+                    {authedUser === pool.author && (
+                      <strong> - Your question</strong>
+                    )}
+                  </p>
                   <hr/>
                   <p className="mdc-typography--caption option">
                     <span
