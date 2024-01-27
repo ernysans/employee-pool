@@ -29,9 +29,9 @@ const LogInPage = ({users, dispatch}) => {
       alert("Wrong password, please try again");
       return;
     }
-    dispatch(setAuthedUser(uid));
     setPassword("");
     setUsername("");
+    dispatch(setAuthedUser(uid));
   }
 
   // Material 2 form for user, password and submit sign in
@@ -39,10 +39,10 @@ const LogInPage = ({users, dispatch}) => {
     <div className="container">
       <div className="content-container">
         <h1 className="mdc-typography--headline4">Employee Pools</h1>
-        {userExist && <Avatar url={user.avatarURL} alt={user.name} />}
+        {userExist && <Avatar url={user.avatarURL} alt={user.name}/>}
         <form onSubmit={handleSubmit}>
           <div className="mdc-text-field mdc-text-field--filled">
-            <input type="text" id="username" className="mdc-text-field__input" value={username}
+            <input type="text" id="username" className="mdc-text-field__input" value={username} autoComplete="off"
                    onChange={handleUsernameChange}/>
             <div className="mdc-notched-outline">
               <div className="mdc-notched-outline__leading"></div>

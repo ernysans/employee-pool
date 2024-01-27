@@ -7,8 +7,8 @@ const DashboardPage = ({newQuestions, doneQuestions}) => {
     <div>
       <Nav/>
       <main className="mdc-top-app-bar--fixed-adjust">
-        <QuestionsList questions={newQuestions} title="New Questions"></QuestionsList>
-        <QuestionsList questions={doneQuestions} title="Done"></QuestionsList>
+        <QuestionsList questions={newQuestions} title="Unanswered"></QuestionsList>
+        <QuestionsList questions={doneQuestions} title="Answered"></QuestionsList>
       </main>
     </div>
   );

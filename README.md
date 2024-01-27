@@ -148,6 +148,13 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't
 customize it when you are ready for it.
 
+# Sign In
+You can sign in with one of the existing users:\
+**Username:** tester\
+**Password:** password
+
+[Review The _DATA.js File](/src/utils/_DATA.js)
+
 ## Learn More
 
 You can learn more in

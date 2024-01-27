@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import UserPreview from "./UserPreview";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
+import Responses from "./Responses";
 
 const QuestionsList = ({title, questions, authedUser}) => {
   return (
@@ -24,20 +25,7 @@ const QuestionsList = ({title, questions, authedUser}) => {
                     )}
                   </p>
                   <hr/>
-                  <p className="mdc-typography--caption option">
-                    <span
-                      className="mdc-typography--body2 votes">{pool.optionOne.votes.length} votes</span>
-                    <span className={
-                      pool.optionOne.votes.includes(authedUser) ? 'mdc-typography--body2 voted' : 'mdc-typography--body2'
-                    }>{pool.optionOne.text}</span>
-                  </p>
-                  <p className="mdc-typography--caption option">
-                    <span
-                      className="mdc-typography--body2 votes">{pool.optionTwo.votes.length} votes</span>
-                    <span className={
-                      pool.optionTwo.votes.includes(authedUser) ? 'mdc-typography--body2 voted' : 'mdc-typography--body2'
-                    }>{pool.optionTwo.text}</span>
-                  </p>
+                  <Responses pool={pool} authedUser={authedUser}></Responses>
                 </div>
                 <div className="mdc-card__actions">
                   <div className="mdc-card__action-buttons">

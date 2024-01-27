@@ -1,10 +1,11 @@
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import NavTab from "./NavTab";
 import UserSwitcher from "./UserSwitcher";
 import {connect} from "react-redux";
 import {logoutUser} from "../../actions/authedUser";
 
 const Nav = ({dispatch}) => {
+  const navigate = useNavigate();
   const location = useLocation();
   const path = location.pathname;
   let activeSection;
@@ -18,6 +19,7 @@ const Nav = ({dispatch}) => {
   const handleSignOut = (e) => {
     e.preventDefault();
     dispatch(logoutUser());
+    navigate('/');
   };
   return (
     <header className="mdc-top-app-bar">

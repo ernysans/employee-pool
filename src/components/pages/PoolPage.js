@@ -6,6 +6,7 @@ import UserPreview from "../shared/UserPreview";
 import {_saveQuestionAnswer} from "../../utils/_DATA";
 import {addAnswer} from "../../actions/questions";
 import {setLoading} from "../../actions/loading";
+import Responses from "../shared/Responses";
 
 const withRouter = (Component) => {
   return (props) => {
@@ -17,7 +18,6 @@ const withRouter = (Component) => {
 };
 
 const PoolPage = ({pool, authedUser, dispatch, loading}) => {
-  const navigate = useNavigate();
   if (!pool) return NotFoundPage();
   const votedOptionOne = pool.optionOne.votes.includes(authedUser);
   const votedOptionTwo = pool.optionTwo.votes.includes(authedUser);
@@ -43,7 +43,6 @@ const PoolPage = ({pool, authedUser, dispatch, loading}) => {
         answer: option,
       }));
       dispatch(setLoading(false));
-      navigate('/');
     }).catch((e) => {
       dispatch(setLoading(false));
       alert('Something went wrong, please try again later:' + e.message);
@@ -57,17 +56,13 @@ const PoolPage = ({pool, authedUser, dispatch, loading}) => {
           <div className="content-container">
             <div className="mdc-card" id="pool-page">
               <div className="content-container">
-                <h1 className="mdc-typography--headline6">Pool By:</h1>
-                <UserPreview uid={pool.author} featured></UserPreview>
-                <hr/>
-                <br/>
                 <h2 className="mdc-typography--headline4">Would You Rather?</h2>
                 <br/>
-                <div className="answers">
+                {!hasVoted && (<div className="answers">
                   <div className="mdc-card answer" data-voted={votedOptionOne}>
                     <div className="content-container">
                       <p className="mdc-typography--body1">{pool.optionOne.text}</p>
-                      <button className="mdc-button mdc-button--raised" disabled={hasVoted || loading} onClick={(e) => {
+                      <button className="mdc-button mdc-button--raised" disabled={loading} onClick={(e) => {
                         e.preventDefault();
                         handleVote('optionOne');
                       }}>
@@ -78,7 +73,7 @@ const PoolPage = ({pool, authedUser, dispatch, loading}) => {
                   <div className="mdc-card answer" data-voted={votedOptionTwo}>
                     <div className="content-container">
                       <p className="mdc-typography--body1">{pool.optionTwo.text}</p>
-                      <button className="mdc-button mdc-button--raised" disabled={hasVoted || loading} onClick={(e) => {
+                      <button className="mdc-button mdc-button--raised" disabled={loading} onClick={(e) => {
                         e.preventDefault();
                         handleVote('optionTwo');
                       }}>
@@ -86,7 +81,16 @@ const PoolPage = ({pool, authedUser, dispatch, loading}) => {
                       </button>
                     </div>
                   </div>
-                </div>
+                </div>)}
+                {hasVoted && (<Responses pool={pool} authedUser={authedUser}></Responses>)}
+                {hasVoted && (<p className="mdc-typography--caption">* Your answer is marked in purple</p>)}
+                {!hasVoted && (
+                  <p className="mdc-typography--caption">* You can't change your answer after you choose one</p>)}
+                <br/>
+                <hr/>
+                <br/>
+                <h1 className="mdc-typography--headline6">Pool By:</h1>
+                <UserPreview uid={pool.author} featured></UserPreview>
               </div>
             </div>
           </div>
@@ -98,7 +102,7 @@ const PoolPage = ({pool, authedUser, dispatch, loading}) => {
 
 const mapStateToProps = ({questions, authedUser, users, loading}, props) => {
   const {question_id} = props.router.params;
-  const pool = questions && questions[question_id];
+  const pool = questions && questions[question_id] ? questions[question_id] : null;
   return {
     pool: pool,
     authedUser,
