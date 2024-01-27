@@ -3,16 +3,10 @@ import {createRoot} from 'react-dom/client';
 import {Provider} from 'react-redux';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
-import {configureStore} from "@reduxjs/toolkit";
-import reducer from "./reducers";
-import middleware from "./middleware";
+import {store} from './utils/store';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
-const store = configureStore({
-  reducer: reducer,
-  middleware: middleware,
-});
 
 root.render(
   <React.StrictMode>
