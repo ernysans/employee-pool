@@ -58,7 +58,11 @@ const PollCreationPage = ({authedUser, loading, dispatch}) => {
                   <form onSubmit={handleSubmit}>
                     <h2 className="mdc-typography--subtitle2">Complete the First Options:</h2>
                     <div className="mdc-form-field mdc-text-field mdc-text-field--filled">
-                      <input type="text" id="optionOne" className="mdc-text-field__input" value={optionOne}
+                      <input type="text"
+                             id="optionOne"
+                             className="mdc-text-field__input"
+                             value={optionOne}
+                             autoComplete="off"
                              onChange={handleQuestionOneChange}/>
                       <div className="mdc-notched-outline">
                         <div className="mdc-notched-outline__leading"></div>
@@ -72,7 +76,11 @@ const PollCreationPage = ({authedUser, loading, dispatch}) => {
                     </div>
                     <h3 className="mdc-typography--subtitle2">Complete the Second Option:</h3>
                     <div className="mdc-form-field mdc-text-field mdc-text-field--filled">
-                      <input type="text" id="optionTwo" className="mdc-text-field__input" value={optionTwo}
+                      <input type="text"
+                             id="optionTwo"
+                             className="mdc-text-field__input"
+                             value={optionTwo}
+                             autoComplete="off"
                              onChange={handleQuestionTwoChange}/>
                       <div className="mdc-notched-outline">
                         <div className="mdc-notched-outline__leading"></div>

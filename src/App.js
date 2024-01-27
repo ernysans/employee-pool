@@ -10,7 +10,7 @@ import {connect} from "react-redux";
 import LogInPage from "./components/pages/LogInPage";
 import Progressbar from "./components/shared/Progressbar";
 
-const App = ({dispatch, ready, loading, authedUser}) => {
+const App = ({dispatch, ready, authedUser}) => {
   useEffect(() => {
     handleInitialData()(dispatch);
   }, [dispatch]);
@@ -29,9 +29,8 @@ const App = ({dispatch, ready, loading, authedUser}) => {
   </div>);
 };
 
-const mapStateToProps = ({users, questions, loading, authedUser}) => ({
+const mapStateToProps = ({users, questions, authedUser}) => ({
   ready: Object.keys(users).length > 0 && Object.keys(questions).length > 0,
-  loading,
   authedUser,
 });
 
