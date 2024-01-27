@@ -1,5 +1,6 @@
 import {setLoading} from "./loading";
-import {_saveQuestionAnswer} from "../utils/_DATA";
+import {_saveQuestion, _saveQuestionAnswer} from "../utils/_DATA";
+import {useNavigate} from "react-router-dom";
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
 export const ADD_QUESTION = 'ADD_QUESTION';
@@ -56,5 +57,35 @@ export const handleVote = ({option, qid}) => {
       dispatch(setLoading(false));
       alert('Something went wrong, please try again later:' + e.message);
     })
+  }
+};
+
+export const handleAddQuestion = ({optionOneText, optionTwoText}) => {
+  return (dispatch, getState) => {
+    // const navigate = useNavigate();
+    const {authedUser, loading} = getState();
+    const allOk = optionOneText.length > 0 && optionTwoText.length > 0 && !loading;
+    if (!allOk) {
+      alert('Please fill all the fields');
+      dispatch(setLoading(false));
+      return;
+    }
+    if (loading) return;
+    const question = {
+      optionOneText: optionOneText,
+      optionTwoText: optionTwoText,
+      author: authedUser,
+    }
+    if (!optionOneText || !optionTwoText) return alert('Please fill in both options');
+    dispatch(setLoading(true));
+    // Save question and update store
+    return _saveQuestion(question).then((formattedQuestion) => {
+      dispatch(addQuestion(formattedQuestion));
+      dispatch(setLoading(false));
+      // navigate('/');
+    }).catch((error) => {
+      alert('Error creating question');
+      dispatch(setLoading(false));
+    });
   }
 };
