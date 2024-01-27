@@ -1,21 +1,27 @@
 import Nav from "../shared/Nav";
+import QuestionsList from "../shared/QuestionsList";
+import {connect} from "react-redux";
 
-const DashboardPage = () => {
+const DashboardPage = ({newQuestions, doneQuestions}) => {
   return (
     <div>
       <Nav/>
       <main className="mdc-top-app-bar--fixed-adjust">
-        App content
-        <button className="mdc-button mdc-button--icon-leading">
-          <span className="mdc-button__ripple"></span>
-          <i className="material-icons mdc-button__icon" aria-hidden="true"
-          >bookmark</i
-          >
-          <span className="mdc-button__label">Text Button plus icon</span>
-        </button>
+        <QuestionsList questions={newQuestions} title="New Questions"></QuestionsList>
+        <QuestionsList questions={doneQuestions} title="Done"></QuestionsList>
       </main>
     </div>
   );
 }
 
-export default DashboardPage;
+const mapStateToProps = ({questions, authedUser}) => {
+  const allQuestions = Object.values(questions ?? {});
+  return ({
+    newQuestions: allQuestions.filter(question => !question.optionOne.votes.includes(authedUser) && !question.optionTwo.votes.includes(authedUser))
+      .sort((a, b) => b.timestamp - a.timestamp),
+    doneQuestions: allQuestions.filter(question => question.optionOne.votes.includes(authedUser) || question.optionTwo.votes.includes(authedUser))
+      .sort((a, b) => b.timestamp - a.timestamp),
+  });
+};
+
+export default connect(mapStateToProps)(DashboardPage);
