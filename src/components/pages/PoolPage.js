@@ -3,9 +3,7 @@ import {connect} from "react-redux";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import NotFoundPage from "./NotFoundPage";
 import UserPreview from "../shared/UserPreview";
-import {_saveQuestionAnswer} from "../../utils/_DATA";
-import {addAnswer} from "../../actions/questions";
-import {setLoading} from "../../actions/loading";
+import {handleVote} from "../../actions/questions";
 import Responses from "../shared/Responses";
 
 const withRouter = (Component) => {
@@ -22,32 +20,6 @@ const PoolPage = ({pool, authedUser, dispatch, loading}) => {
   const votedOptionOne = pool.optionOne.votes.includes(authedUser);
   const votedOptionTwo = pool.optionTwo.votes.includes(authedUser);
   const hasVoted = votedOptionOne || votedOptionTwo;
-
-  /**
-   * Handle vote
-   * @param option
-   */
-  const handleVote = (option) => {
-    if (loading) return;
-    if (!option) return alert('Please select an option');
-    dispatch(setLoading(true));
-    // Save answer and update store
-    _saveQuestionAnswer({
-      authedUser,
-      qid: pool.id,
-      answer: option,
-    }).then(() => {
-      dispatch(addAnswer({
-        authedUser,
-        qid: pool.id,
-        answer: option,
-      }));
-      dispatch(setLoading(false));
-    }).catch((e) => {
-      dispatch(setLoading(false));
-      alert('Something went wrong, please try again later:' + e.message);
-    })
-  };
   return (
     <div>
       <Nav/>
@@ -64,7 +36,10 @@ const PoolPage = ({pool, authedUser, dispatch, loading}) => {
                       <p className="mdc-typography--body1">{pool.optionOne.text}</p>
                       <button className="mdc-button mdc-button--raised" disabled={loading} onClick={(e) => {
                         e.preventDefault();
-                        handleVote('optionOne');
+                        dispatch(handleVote({
+                          option: 'optionOne',
+                          qid: pool.id,
+                        }));
                       }}>
                         <span className="mdc-button__label">{votedOptionOne ? `VOTED` : 'VOTE'}</span>
                       </button>
@@ -75,7 +50,10 @@ const PoolPage = ({pool, authedUser, dispatch, loading}) => {
                       <p className="mdc-typography--body1">{pool.optionTwo.text}</p>
                       <button className="mdc-button mdc-button--raised" disabled={loading} onClick={(e) => {
                         e.preventDefault();
-                        handleVote('optionTwo');
+                        dispatch(handleVote({
+                          option: 'optionTwo',
+                          qid: pool.id,
+                        }));
                       }}>
                         <span className="mdc-button__label">{votedOptionTwo ? `VOTED` : 'VOTE'}</span>
                       </button>
