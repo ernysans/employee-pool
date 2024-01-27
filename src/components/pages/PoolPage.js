@@ -2,6 +2,10 @@ import Nav from "../shared/Nav";
 import {connect} from "react-redux";
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import NotFoundPage from "./NotFoundPage";
+import UserPreview from "../shared/UserPreview";
+import {_saveQuestionAnswer} from "../../utils/_DATA";
+import {addAnswer} from "../../actions/questions";
+import {setLoading} from "../../actions/loading";
 
 const withRouter = (Component) => {
   return (props) => {
@@ -12,20 +16,77 @@ const withRouter = (Component) => {
   };
 };
 
-const PoolPage = ({pool}) => {
+const PoolPage = ({pool, authedUser, dispatch}) => {
+  const navigate = useNavigate();
   if (!pool) return NotFoundPage();
+  const votedOptionOne = pool.optionOne.votes.includes(authedUser);
+  const votedOptionTwo = pool.optionTwo.votes.includes(authedUser);
+  const hasVoted = votedOptionOne || votedOptionTwo;
+
+  /**
+   * Handle vote
+   * @param option
+   */
+  const handleVote = (option) => {
+    if (!option) return alert('Please select an option');
+    dispatch(setLoading(true));
+    // Save answer and update store
+    _saveQuestionAnswer({
+      authedUser,
+      qid: pool.id,
+      answer: option,
+    }).then(() => {
+      dispatch(addAnswer({
+        authedUser,
+        qid: pool.id,
+        answer: option,
+      }));
+      dispatch(setLoading(false));
+      navigate('/');
+    }).catch((e) => {
+      dispatch(setLoading(false));
+      alert('Something went wrong, please try again later:' + e.message);
+    })
+  };
   return (
     <div>
       <Nav/>
       <main className="mdc-top-app-bar--fixed-adjust">
         <div className="container">
           <div className="content-container">
-            <div className="mdc-card">
-              <h1 className="mdc-typography--headline6">{pool.author.name} asks:</h1>
-              <h2 className="mdc-typography--subtitle2">Would you rather</h2>
-              <p className="mdc-typography--body2">{pool.optionOne.text}</p>
-              <p className="mdc-typography--body2">or</p>
-              <p className="mdc-typography--body2">{pool.optionTwo.text}</p>
+            <div className="mdc-card" id="pool-page">
+              <div className="content-container">
+                <h1 className="mdc-typography--headline6">Pool By:</h1>
+                <UserPreview uid={pool.author} featured></UserPreview>
+                <hr/>
+                <br/>
+                <h2 className="mdc-typography--headline4">Would You Rather?</h2>
+                <br/>
+                <div className="answers">
+                  <div className="mdc-card answer" data-voted={votedOptionOne}>
+                    <div className="content-container">
+                      <p className="mdc-typography--body1">{pool.optionOne.text}</p>
+                      <button className="mdc-button mdc-button--raised" disabled={hasVoted} onClick={(e) => {
+                        e.preventDefault();
+                        handleVote('optionOne');
+                      }}>
+                        <span className="mdc-button__label">{votedOptionOne ? `VOTED` : 'VOTE'}</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div className="mdc-card answer" data-voted={votedOptionTwo}>
+                    <div className="content-container">
+                      <p className="mdc-typography--body1">{pool.optionTwo.text}</p>
+                      <button className="mdc-button mdc-button--raised" disabled={hasVoted} onClick={(e) => {
+                        e.preventDefault();
+                        handleVote('optionTwo');
+                      }}>
+                        <span className="mdc-button__label">{votedOptionTwo ? `VOTED` : 'VOTE'}</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -34,13 +95,13 @@ const PoolPage = ({pool}) => {
   );
 }
 
-const mapStateToProps = ({questions, authedUser}, props) => {
-  const {id} = props.router.params;
-  const pool = questions && questions[id];
-
+const mapStateToProps = ({questions, authedUser, users}, props) => {
+  const {question_id} = props.router.params;
+  const pool = questions && questions[question_id];
   return {
     pool: pool,
-    authedUser
+    authedUser,
+    users,
   }
 }
 export default withRouter(connect(mapStateToProps)(PoolPage));

@@ -12,7 +12,7 @@ const Nav = ({dispatch}) => {
     activeSection = 'dashboard';
   } else if (path === '/leaderboard') {
     activeSection = 'leaderboard';
-  } else if (path === '/new') {
+  } else if (path === '/add') {
     activeSection = 'new';
   }
   const handleSignOut = (e) => {
@@ -30,7 +30,7 @@ const Nav = ({dispatch}) => {
                   <NavTab label="Home" icon="home" path="/" active={activeSection === 'dashboard'}/>
                   <NavTab label="Leaderboard" icon="leaderboard" path="/leaderboard"
                           active={activeSection === 'leaderboard'}/>
-                  <NavTab label="New" icon="create" path="/new" active={activeSection === 'new'}/>
+                  <NavTab label="New" icon="create" path="/add" active={activeSection === 'new'}/>
                 </div>
               </div>
             </div>

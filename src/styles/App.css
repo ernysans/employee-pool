@@ -117,9 +117,33 @@
   align-items: center;
   margin-bottom: 1rem;
   padding: 1rem;
+  flex-direction: column;
 }
 
 .user-preview-featured .avatar {
   height: 6rem;
   width: 6rem;
+  margin-bottom: 1rem;
+}
+
+/**
+  * pool-page
+  */
+#pool-page {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  text-align: center;
+}
+#pool-page .answers {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  text-align: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+#pool-page .answers .answer[data-voted=true] {
+  background-color: var(--mdc-theme-primary, black);
+  color: #fff;
 }

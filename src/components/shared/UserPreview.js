@@ -7,9 +7,9 @@ const UserPreview = ({user, featured = false}) => {
     <div className={
       featured ? `user-preview user-preview-featured` : "user-preview"
     }>
-      <Avatar url={user.avatarURL}></Avatar>
+      <Avatar url={user.avatarURL} alt={user.name}></Avatar>
       <span className={
-        featured ? "mdc-typography--headline1" : "mdc-typography--body1"
+        featured ? "mdc-typography--headline4" : "mdc-typography--body1"
       }>{user.name}</span>
     </div>
   );

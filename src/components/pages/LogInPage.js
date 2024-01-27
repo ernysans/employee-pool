@@ -39,7 +39,7 @@ const LogInPage = ({users, dispatch}) => {
     <div className="container">
       <div className="content-container">
         <h1 className="mdc-typography--headline4">Employee Pools</h1>
-        {userExist && <Avatar url={user.avatarURL} />}
+        {userExist && <Avatar url={user.avatarURL} alt={user.name} />}
         <form onSubmit={handleSubmit}>
           <div className="mdc-text-field mdc-text-field--filled">
             <input type="text" id="username" className="mdc-text-field__input" value={username}

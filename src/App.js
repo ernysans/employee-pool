@@ -21,8 +21,8 @@ const App = ({dispatch, ready, loading, authedUser}) => {
       {!loading && !authedUser && (<LogInPage/>)}
       {!loading && authedUser && (<Routes>
         <Route exact path="/" element={<DashboardPage/>}/>
-        <Route exact path="/new" element={<PollCreationPage/>}/>
-        <Route path="/pool/:id" element={<PoolPage/>}/>
+        <Route exact path="/add" element={<PollCreationPage/>}/>
+        <Route path="/questions/:question_id" element={<PoolPage/>}/>
         <Route exact path="/leaderboard" element={<LeaderboardPage/>}/>
       </Routes>)}
     </Fragment>

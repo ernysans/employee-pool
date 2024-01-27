@@ -42,7 +42,7 @@ const LeaderboardPage = ({users, authedUser}) => {
                       } key={user.name}>
                         <th className="mdc-data-table__cell" scope="row">
                           <div className="leaderboard-user-item">
-                            <Avatar url={user.avatarURL}/>
+                            <Avatar url={user.avatarURL} alt={user.name}/>
                             <div className="leaderboard-user-item__content">
                               <span className="mdc-typography--subtitle1">{user.name}</span>
                               <span className="mdc-typography--caption">{user.id}</span>
@@ -67,7 +67,7 @@ const LeaderboardPage = ({users, authedUser}) => {
   );
 }
 
-const mapStateToProps = ({users, questions, authedUser}) => ({
+const mapStateToProps = ({users, authedUser}) => ({
   users,
   authedUser,
 });

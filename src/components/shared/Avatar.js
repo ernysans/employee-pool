@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 
-const Avatar = ({url}) => {
+const Avatar = ({url = "https://via.placeholder.com/150", alt = "avatar"}) => {
   return (
     <img
       src={url}
-      alt="avatar"
+      alt={alt}
       className="avatar"
     />
   );
@@ -12,5 +12,6 @@ const Avatar = ({url}) => {
 
 Avatar.propTypes = {
   url: PropTypes.string,
+  alt: PropTypes.string,
 };
 export default Avatar;
