@@ -2,6 +2,7 @@
   "name": "employee-pool",
   "version": "0.1.0",
   "private": true,
+  "author": "Erny Sans",
   "dependencies": {
     "@material/linear-progress": "^14.0.0",
     "@material/select": "^14.0.0",
@@ -15,7 +16,7 @@
     "react-dom": "^18.2.0",
     "react-redux": "^9.1.0",
     "react-router-dom": "^6.21.3",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "redux-thunk": "^3.1.0",
     "web-vitals": "^3.5.1"
   },
