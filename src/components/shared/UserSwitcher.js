@@ -1,12 +1,13 @@
 import {connect} from "react-redux";
 import {useEffect} from "react";
 import {setAuthedUser} from "../../actions/authedUser";
+import * as select from '@material/select/dist/mdc.select.min';
 
 const UserSwitcher = ({users, dispatch, authedUser}) => {
   useEffect(() => {
     // start mdc-select
-    const select = document.querySelector('.mdc-select');
-    const selectComponent = new window.mdc.select.MDCSelect(select);
+    const selectElement = document.querySelector('.mdc-select');
+    const selectComponent = new select.MDCSelect(selectElement);
     selectComponent.listen('MDCSelect:change', () => {
       const uid = selectComponent.value;
       if (!uid) return;

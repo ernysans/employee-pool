@@ -1,6 +1,5 @@
 import {setLoading} from "./loading";
 import {_saveQuestion, _saveQuestionAnswer} from "../utils/_DATA";
-import {useNavigate} from "react-router-dom";
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
 export const ADD_QUESTION = 'ADD_QUESTION';

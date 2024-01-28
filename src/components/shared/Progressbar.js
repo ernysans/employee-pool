@@ -1,11 +1,12 @@
 import {connect} from "react-redux";
 import {useEffect} from "react";
+import * as linearProgress from "@material/linear-progress/dist/mdc.linearProgress.min";
 
 const Progressbar = ({loading}) => {
   useEffect(() => {
     if (!loading) return;
     const element = document.querySelector('.mdc-linear-progress');
-    const progressBar = new window.mdc.linearProgress.MDCLinearProgress(element);
+    const progressBar = new linearProgress.MDCLinearProgress(element);
     progressBar.open();
   }, [loading]);
   if (!loading) return (<div></div>);

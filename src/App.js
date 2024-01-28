@@ -1,4 +1,5 @@
 import {Fragment, useEffect} from 'react';
+import "material-components-web/dist/material-components-web.min.css";
 import './styles/App.css';
 import {Route, Routes} from "react-router-dom";
 import DashboardPage from "./components/pages/DashboardPage";
