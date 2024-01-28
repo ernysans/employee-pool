@@ -4,7 +4,8 @@ import {Link} from "react-router-dom";
 const NavTab = ({label, icon, path, active}) => {
   return (<Link className={
     active ? "mdc-tab mdc-tab--active" : "mdc-tab"
-  } role="tab" aria-selected="true" tabIndex="0" to={path}>
+  } role="tab" aria-selected={active ? "true" : "false"} tabIndex="0" to={path} aria-label={label}
+                data-testid={'nav-button-' + path}>
     <span className="mdc-tab__content">
       <span className="mdc-tab__icon material-icons" aria-hidden="true">{icon}</span>
       <span className="mdc-tab__text-label">{label}</span>

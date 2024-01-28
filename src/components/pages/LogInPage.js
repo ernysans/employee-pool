@@ -39,10 +39,12 @@ const LogInPage = ({users, dispatch}) => {
     <div className="container">
       <div className="content-container">
         <h1 className="mdc-typography--headline4">Employee Pools</h1>
+        <h2 className="mdc-typography--headline6">Sign in</h2>
         {userExist && <Avatar url={user.avatarURL} alt={user.name}/>}
         <form onSubmit={handleSubmit}>
           <div className="mdc-text-field mdc-text-field--filled">
-            <input type="text" id="username" className="mdc-text-field__input" value={username} autoComplete="off"
+            <input type="text" id="username" data-testid="username" className="mdc-text-field__input" value={username}
+                   autoComplete="off"
                    onChange={handleUsernameChange}/>
             <div className="mdc-notched-outline">
               <div className="mdc-notched-outline__leading"></div>
@@ -53,9 +55,10 @@ const LogInPage = ({users, dispatch}) => {
               <div className="mdc-notched-outline__trailing"></div>
             </div>
           </div>
-          {userExist && (<div className="mdc-text-field mdc-text-field--filled">
-            <input type="password" autoComplete="off" id="password" className="mdc-text-field__input" value={password}
-                   onChange={handlePasswordChange}/>
+          <div className="mdc-text-field mdc-text-field--filled">
+            <input type="password" autoComplete="off" id="password" data-testid="password"
+                   className="mdc-text-field__input" value={password}
+                   onChange={handlePasswordChange} disabled={!userExist}/>
             <div className="mdc-notched-outline">
               <div className="mdc-notched-outline__leading"></div>
               <div className="mdc-notched-outline__notch">
@@ -64,10 +67,10 @@ const LogInPage = ({users, dispatch}) => {
               </div>
               <div className="mdc-notched-outline__trailing"></div>
             </div>
-          </div>)}
-          {userExist && (<button className="mdc-button mdc-button--raised">
+          </div>
+          <button className="mdc-button mdc-button--raised" data-testid="submit" disabled={!userExist}>
             <span className="mdc-button__label">Login</span>
-          </button>)}
+          </button>
         </form>
       </div>
     </div>

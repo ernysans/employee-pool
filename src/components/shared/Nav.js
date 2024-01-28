@@ -40,8 +40,8 @@ const Nav = ({dispatch}) => {
         </section>
         <section className="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
           <UserSwitcher/>
-          <button className="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Download"
-                  title="Sign out" onClick={handleSignOut}>exit_to_app
+          <button className="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Sign out"
+                  title="Sign out" onClick={handleSignOut} data-testid="sign-out-button">exit_to_app
           </button>
         </section>
       </div>
