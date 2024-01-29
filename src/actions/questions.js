@@ -83,7 +83,7 @@ export const handleAddQuestion = ({optionOneText, optionTwoText}) => {
       dispatch(setLoading(false));
       // navigate('/');
     }).catch((error) => {
-      alert('Error creating question');
+      alert('Error creating question', error.message);
       dispatch(setLoading(false));
     });
   }

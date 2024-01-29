@@ -5,7 +5,7 @@ import {handleAddQuestion} from "../../actions/questions";
 import {useNavigate} from "react-router-dom";
 import Footer from "../shared/Footer";
 
-const PollCreationPage = ({authedUser, loading, dispatch}) => {
+const PollCreationPage = ({loading, dispatch}) => {
   const navigate = useNavigate();
   const [optionOne, setOptionOne] = useState('');
   const [optionTwo, setOptionTwo] = useState('');
@@ -92,9 +92,9 @@ const PollCreationPage = ({authedUser, loading, dispatch}) => {
   );
 }
 
-const mapStateToProps = ({authedUser, loading}) => {
+const mapStateToProps = ({loading}) => {
   return {
-    authedUser, loading,
+    loading,
   }
 }
 
