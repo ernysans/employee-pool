@@ -20,10 +20,19 @@ Would you rather?" polls. It is built with React, Redux, React Router, & Redux T
 * Responsive design
 * Unit tests
 
+## Sign In
+
+You can sign in with one of the existing users:\
+**Username:** tester\
+**Password:** password
+
+[Review The _DATA.js File](/src/utils/_DATA.js)
+
 ## Sections
 
 * [About the project](#about-the-project)
 * [App Functionality](#app-functionality)
+* [Sign In](#sign-in)
 * [How to run the project](#how-to-run-the-project)
 * [Project Overview](#project-overview)
 * [Data](#data)
@@ -73,14 +82,6 @@ point to the copied scripts so you can tweak them. At this point you're on your 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you
 shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't
 customize it when you are ready for it.
-
-## Sign In
-
-You can sign in with one of the existing users:\
-**Username:** tester\
-**Password:** password
-
-[Review The _DATA.js File](/src/utils/_DATA.js)
 
 ## Project Overview
 
