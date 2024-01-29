@@ -2,8 +2,29 @@
 
 ## About the project
 
-"Employee Polls" is a web app built for **Udacity's React & Redux course**, part of the **Udacity's React Nanodegree Program**. It lets teams create, share, and answer simple "
+"Employee Polls" is a web app built for **Udacity's React & Redux course**, part of the **Udacity's React Nanodegree
+Program**. It lets teams create, share, and answer simple "
 Would you rather?" polls. It is built with React, Redux, React Router, & Redux Thunk.
+
+## Screenshots
+
+1. Login Page
+   ![LogInPage.png](screenshots%2FLogInPage.png)
+2. Dashboard Page
+   ![DashboardPage.png](screenshots%2FDashboardPage.png)
+3. New Question Page
+   ![PollCreationPage.png](screenshots%2FPollCreationPage.png)
+4. Poll Details Page
+
+* User hasn't answered the poll yet
+  ![PoolPage-no-voted.png](screenshots%2FPoolPage-no-voted.png)
+* User has answered the poll
+  ![PoolPage-voted.png](screenshots%2FPoolPage-voted.png)
+
+5. Leaderboard Page
+   ![LeaderboardPage.png](screenshots%2FLeaderboardPage.png)
+6. User Switcher and Logout button\
+   ![UserSwitcher.png](screenshots%2FUserSwitcher.png)
 
 ## App Functionality
 
@@ -19,6 +40,7 @@ Would you rather?" polls. It is built with React, Redux, React Router, & Redux T
 * Error handling
 * Responsive design
 * Unit tests
+* Material Design
 
 ## Sign In
 
@@ -31,6 +53,7 @@ You can sign in with one of the existing users:\
 ## Sections
 
 * [About the project](#about-the-project)
+* [Screenshots](#screenshots)
 * [App Functionality](#app-functionality)
 * [Sign In](#sign-in)
 * [How to run the project](#how-to-run-the-project)
