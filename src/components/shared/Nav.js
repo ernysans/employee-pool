@@ -22,10 +22,10 @@ const Nav = ({dispatch}) => {
     navigate('/');
   };
   return (
-    <header className="mdc-top-app-bar">
+    <header className="mdc-top-app-bar" id="header">
       <div className="mdc-top-app-bar__row">
         <section className="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-          <div className="mdc-tab-bar" role="tablist">
+          <nav className="mdc-tab-bar" role="tablist">
             <div className="mdc-tab-scroller">
               <div className="mdc-tab-scroller__scroll-area">
                 <div className="mdc-tab-scroller__scroll-content">
@@ -36,7 +36,7 @@ const Nav = ({dispatch}) => {
                 </div>
               </div>
             </div>
-          </div>
+          </nav>
         </section>
         <section className="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
           <UserSwitcher/>
