@@ -2,6 +2,7 @@ import Nav from "../shared/Nav";
 import {connect} from "react-redux";
 import "../../styles/LeaderboardPage.css";
 import Avatar from "../shared/Avatar";
+import Footer from "../shared/Footer";
 
 const LeaderboardPage = ({users, authedUser}) => {
   const sortedUsers = Object.entries(users)
@@ -63,6 +64,7 @@ const LeaderboardPage = ({users, authedUser}) => {
           </div>
         </div>
       </main>
+      <Footer/>
     </div>
   );
 }

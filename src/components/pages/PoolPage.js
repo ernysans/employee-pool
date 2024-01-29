@@ -5,6 +5,7 @@ import NotFoundPage from "./NotFoundPage";
 import UserPreview from "../shared/UserPreview";
 import {handleVote} from "../../actions/questions";
 import Responses from "../shared/Responses";
+import Footer from "../shared/Footer";
 
 const withRouter = (Component) => {
   return (props) => {
@@ -74,6 +75,7 @@ const PoolPage = ({pool, authedUser, dispatch, loading}) => {
           </div>
         </div>
       </main>
+      <Footer/>
     </div>
   );
 }

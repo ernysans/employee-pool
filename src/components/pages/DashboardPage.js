@@ -1,6 +1,7 @@
 import Nav from "../shared/Nav";
 import QuestionsList from "../shared/QuestionsList";
 import {connect} from "react-redux";
+import Footer from "../shared/Footer";
 
 const DashboardPage = ({newQuestions, doneQuestions}) => {
   return (
@@ -10,6 +11,7 @@ const DashboardPage = ({newQuestions, doneQuestions}) => {
         <QuestionsList questions={newQuestions} title="Unanswered"></QuestionsList>
         <QuestionsList questions={doneQuestions} title="Answered"></QuestionsList>
       </main>
+      <Footer/>
     </div>
   );
 }

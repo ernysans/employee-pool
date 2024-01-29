@@ -1,4 +1,5 @@
 import Nav from "../shared/Nav";
+import Footer from "../shared/Footer";
 
 const NotFoundPage = () => (
   <div>
@@ -10,6 +11,7 @@ const NotFoundPage = () => (
         </div>
       </div>
     </main>
+    <Footer/>
   </div>
 )
 export default NotFoundPage
