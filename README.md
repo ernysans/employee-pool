@@ -1,6 +1,33 @@
 # Employee Polls Project
 
-This is the starter code for the final assessment project for Udacity's React & Redux course.
+## About the project
+
+"Employee Polls" is a web app built for **Udacity's React & Redux course**, part of the **Udacity's React Nanodegree Program**. It lets teams create, share, and answer simple "
+Would you rather?" polls. It is built with React, Redux, React Router, & Redux Thunk.
+
+## App Functionality
+
+* Login as an existing user
+* Create a new poll
+* Answer a poll
+* View the leaderboard
+* View the poll details
+* Logout
+* Switch between users
+* 404 page
+* Loading bar
+* Error handling
+* Responsive design
+* Unit tests
+
+## Sections
+
+* [About the project](#about-the-project)
+* [App Functionality](#app-functionality)
+* [How to run the project](#how-to-run-the-project)
+* [Project Overview](#project-overview)
+* [Data](#data)
+* [Learn More](#learn-more)
 
 # How to run the project
 
@@ -48,12 +75,12 @@ shouldn't feel obligated to use this feature. However we understand that this to
 customize it when you are ready for it.
 
 ## Sign In
+
 You can sign in with one of the existing users:\
 **Username:** tester\
 **Password:** password
 
 [Review The _DATA.js File](/src/utils/_DATA.js)
-
 
 ## Project Overview
 
