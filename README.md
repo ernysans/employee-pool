@@ -63,6 +63,13 @@ You can sign in with one of the existing users:\
 
 # How to run the project
 
+1. Clone and download the project
+2. Install all project dependencies with `npm install`
+3. Start the development server with `npm start`
+4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+5. Run the tests with `npm test`
+6. Build the project with `npm run build`
+
 ## Available Scripts
 
 In the project directory, you can run:
